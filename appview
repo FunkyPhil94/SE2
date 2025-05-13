@@ -1,0 +1,28 @@
+helloUser = new H1();
+        topRightPanel.add(helloUser);
+
+        MenuBar bar = new MenuBar();
+
+        // Profil bearbeiten-Button am rechts-oberen Rand.
+        MenuItem  editProfileButton = bar.addItem("Profil bearbeiten", e -> switchToEditProfile());
+
+        // Logout-Button am rechts-oberen Rand.
+        MenuItem logoutButton = bar.addItem("Logout" , e -> logoutUser());
+        topRightPanel.add(bar);
+
+
+
+
+        layout.add( topRightPanel );
+        return layout;
+    }
+
+    private void logoutUser() {
+        UI ui = this.getUI().get();
+        ui.getSession().close();
+        ui.getPage().setLocation("/");
+    }
+
+    private void switchToEditProfile(){
+        UI.getCurrent().navigate("EditProfile");
+    }
